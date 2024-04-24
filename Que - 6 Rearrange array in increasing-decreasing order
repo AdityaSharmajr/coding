@@ -1,0 +1,35 @@
+Problem Statement: Rearrange the array such that the first half is arranged in increasing order, and the second half is arranged in decreasing order
+Example 1:
+Input: 8 7 1 6 5 9
+Output: 1 5 6 9 8 7
+Explanation: First three elements are in the ascending order and next three elements are in the descending order.
+Example 2:
+Input: 4 2 8 6 15 5 9 20
+Output: 2 4 5 6 20 15 9 8
+
+#include<bits/stdc++.h>
+#include<vector>
+using namespace std;
+void rearrangearray(vector<int> arr){
+    sort(arr.begin(), arr.end());
+    int n = arr.size();
+    int j = n/2;
+    vector<int> answer;
+    for(int i = 0; i < n/2; i++){
+        answer.push_back(arr[i]);
+    }
+    sort(arr.rbegin(),arr.rend());
+    for(int i = 0; i < n; i++){
+        answer.push_back(arr[i]);
+    }
+    for(int i = 0; i < n; i++){
+        cout << answer[i] << " ";
+    }
+    
+}
+
+int main () {
+    vector<int> arr = {4, 2, 8, 6, 15, 5, 9, 20};
+    rearrangearray(arr);
+    return 0;
+}
