@@ -1,0 +1,33 @@
+Problem Statement: Given an array of n size, rotate the array by k elements using the Block Swap Algorithm.
+Example 1:
+Input: N = 5, array[] = {1,2,3,4,5} K=2
+Output: {3,4,5,1,2}
+Explanation: Rotate the array to right by 2 elements.
+
+Example 2:
+Input: N = 7, array[] = {1,2,3,4,5,6,7} K=3
+Output: {4,5,6,7,1,2,3}
+Explanation: Rotate the array to right by 3 elements.
+
+#include<bits/stdc++.h>
+#include<vector>
+using namespace std;
+void rotatearray(vector<int>& arr, int k){
+    int n = arr.size();
+    vector<int> answer;
+    for(int i = k; i < n; i++){
+        answer.push_back(arr[i]);
+    }
+    for(int i = 0; i < k; i++){
+        answer.push_back(arr[i]);
+    }
+    for(int i = 0; i < n ; i++){
+        cout << answer[i] << " ";
+    }
+}
+int main () {
+    vector<int> arr = {1,2,3,4,5,6,7};
+    int k = 3;
+    rotatearray(arr, k);
+    return 0;
+}
