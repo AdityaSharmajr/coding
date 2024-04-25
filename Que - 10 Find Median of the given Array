@@ -1,0 +1,31 @@
+Problem Statement: Given an unsorted array, find the median of the given array.
+Example 1:
+Input: [2,4,1,3,5]
+Output: 3
+Example 2:
+Input: [2,5,1,7]
+Output: 3.5
+Median is defined as the value which is present in the middle for a series of values.
+ Note, in order to find the median of an array of integers, we must make sure they are sorted.
+
+#include<bits/stdc++.h>
+using namespace std;
+void MedianArray(vector<int> arr){
+    int n = arr.size();
+    sort(arr.begin(),arr.end());
+        if(n%2 == 0){
+            n = n/2;
+            double median = double(arr[n] + arr[n-1])/2;
+            cout << "Median: " << median;
+        }
+        else{
+            cout << "Median: " << arr[n/2];
+        }
+    }
+
+int main(){
+    
+    vector<int> arr = {2,5,1,7};
+    MedianArray(arr);
+    return 0;
+}
