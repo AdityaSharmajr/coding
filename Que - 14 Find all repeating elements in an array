@@ -1,0 +1,27 @@
+Find all repeating elements in an array
+Example 1:
+Input: Arr[] = [1,1,2,3,4,4,5,2]
+Output: 1,2,4
+Explanation: 1,2 and 4 are the elements which are occurring more than once.
+Example 2:
+Input: Arr[] = [1,1,0]
+Output: 1
+Explanation: Only 1 is occurring more than once in the given array.
+#include<bits/stdc++.h>
+using namespace std;
+void RepeatArray(int arr[], int n){
+    unordered_map<int, int> umap;
+    for(int i = 0; i < n; i++){
+        if(umap[arr[i]]++>0){
+            cout << arr[i] <<" ";
+        }
+    }
+    cout << endl;
+}
+
+int main(){
+    int arr[] = {1,1,2,3,4,4,5,2};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    RepeatArray(arr, n);
+    return 0;
+}
