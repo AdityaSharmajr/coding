@@ -7,27 +7,43 @@ Example 2:
 Input: 1 5 8 15 8 25 9
 Output: 1 2 3 5 3 6 4
 Explanation: When sorted,the array is 1,5,8,8,9,15,25. So the rank of 1 is 1,rank of 5 is 2,rank of 8 is 3 and so…
-#include<bits/stdc++.h>
+#include <iostream>
+#include <set> 
 using namespace std;
-void RankArray(int arr[], int n){
-        for(int i = 0; i < n; i++){
-            set<int> s;
-            for(int j = 0; j < n; j++){
-                if(arr[i]> arr[j]){
-                    s.insert(arr[j]);
-                }
+
+void RankArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        set<int> s;
+        for (int j = 0; j < n; j++) {
+            if (arr[i] > arr[j]) {
+                s.insert(arr[j]);
             }
-            cout << s.size() + 1 << " ";
         }
+        cout << s.size() + 1 << " ";
     }
-int main(){
+    cout << endl; // Add a new line after printing the ranks
+}
+
+int main() {
     int n;
     cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++) { 
-        cout << "Enter a number: "; 
-        cin >> arr[i]; 
-    } 
-    RankArray(arr, n);
+    for (int i = 0; i < n; i++) {
+        int size;
+        cout << "Enter the size of the array: ";
+        cin >> size;
+        int* arr = new int[size];
+        cout << "Enter " << size << " elements for the array:\n";
+        for (int j = 0; j < size; ++j) {
+            cout << "Element " << j+1 << ": ";
+            cin >> arr[j];
+        }
+        cout << "The array you entered is: ";
+        for (int j = 0; j < size; ++j) {
+            cout << arr[j] << " ";
+        }
+        cout << endl;
+        RankArray(arr, size); // Call RankArray function here
+        delete[] arr;
+    }
     return 0;
 }
