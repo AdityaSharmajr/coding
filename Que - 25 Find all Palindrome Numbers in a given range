@@ -1,0 +1,39 @@
+Example 1:
+Input: min = 10 , max = 50
+Output: 11 22 33 44 
+Explanation: 11, 22, 33, 44 will remain the same when they read from forward or backward.
+Example2:
+Input: min = 100 , max = 150
+Output: 101 111 121 131 141 
+Explanation: 11, 22, 33, 44 will remain the same when they read from forward or backward.
+#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int reverse(int n){
+    int reveresd = 0;
+    while(n>0){
+        int digit = n % 10;
+        reveresd = reveresd * 10 + digit;
+        n = n / 10;        
+    }
+    return reveresd;
+}
+bool isPalindrome(int n){
+    return n == reverse(n);
+}
+int main(){
+    int min;
+    cout << "enter min:";
+    cin >> min;
+    int max;
+    cout << "enter max:";
+    cin >> max;
+    for(int i = min; i < max; i++){
+         if(isPalindrome(i)){
+             cout << i << " ";
+         }
+    }
+    return 0;
+}
