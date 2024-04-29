@@ -1,0 +1,36 @@
+Example 1:
+Input: N = 3
+Output:Prime
+Explanation:3 is a prime number
+Example 2:
+Input:N = 26
+Output:Non-Prime
+Explanation: 26 is not prime
+#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+using namespace std;
+bool isprime(int n){
+    if(n<2){
+            return false;
+        }
+    for(int i = 2; i*i <= n; i++){
+        if(n % i == 0){
+            return false;
+        }
+    }
+            return true;
+    }
+
+int main(){
+    int n;
+    cin >> n;
+    bool k = isprime(n);
+    if(k == true){
+        cout << "prime no";
+    }
+    else{
+        cout << "not a prime no";
+    }
+     return 0;
+}
