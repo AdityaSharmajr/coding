@@ -7,69 +7,52 @@ Example 2:
 Input: N = 6, array[] = {3,7,8,9,10,11} , k=3 , left 
 Output: 9 10 11 3 7 8
 Explanation: Array is rotated to right by 3 position.
-#include<iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
-void rotateRight(int arr[], int n, int k) {
-    k = k % n; 
-    reverse(arr, arr + n); // Reverse the whole array
-    reverse(arr, arr + k); // Reverse the first k elements
-    reverse(arr + k, arr + n); // Reverse the remaining n-k elements
+void rotateArrayright(int n, int arr[], int k){
+    vector<int>num;
+    for(int i = n - k; i < n; i++){
+        num.push_back(arr[i]);
+    }
+    for(int i = 0; i < n - k; i++){
+        num.push_back(arr[i]);
+    }
+    for(int i = 0; i < n; i++){
+        cout << num[i] << " ";
+    }
 }
-void rotateLeft(int arr[], int n, int k) {
-    k = k % n; 
-    reverse(arr, arr + n); 
-    reverse(arr, arr + n - k); // Reverse the last n-k elements
-    reverse(arr + n - k, arr + n); // Reverse the first k elements
+void rotateArrayleft(int n, int arr[], int k){
+    vector<int> num;
+    for(int i = k; i < n; i++){
+        num.push_back(arr[i]);
+    }
+    for(int i = 0; i < n - k; i++){
+        num.push_back(arr[i]);
+    }
+    for(int i = 0; i < n; i++){
+        cout << num[i] << " ";
+    }
 }
-
-int main() {
+int main(){
+    int m;
+    cin >> m;
+    for(int i = 0; i < m; i++){
     int n;
-    cout << "Enter the number Array: ";
     cin >> n;
-
-    for (int i = 0; i < n; i++) {
-        int size;
-        cout << "Enter size of array: ";
-        cin >> size;
-
-        int k;
-        cout << "Enter value of k: ";
-        cin >> k;
-
-        char direction;
-        cout << "Enter direction (L for left, R for right): ";
-        cin >> direction;
-
-        int* arr = new int[size];
-        cout << "Enter " << size << " elements for the array:\n";
-        for (int j = 0; j < size; ++j) {
-            cout << "Element " << j + 1 << ": ";
-            cin >> arr[j];
-        }
-
-        cout << "Original array: ";
-        for (int j = 0; j < size; ++j) {
-            cout << arr[j] << " ";
-        }
-        cout << endl;
-
-        if (direction == 'R' || direction == 'r') {
-            rotateRight(arr, size, k);
-            cout << "Array after rotating right by " << k << " elements: ";
-        } else if (direction == 'L' || direction == 'l') {
-            rotateLeft(arr, size, k);
-            cout << "Array after rotating left by " << k << " elements: ";
-        } else {
-            cout << "Invalid direction. Please enter 'L' for left or 'R' for right.";
-        }
-        for (int j = 0; j < size; ++j) {
-            cout << arr[j] << " ";
-        }
-        cout << endl;
-
-        delete[] arr;
+    int arr[n];
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+    int k;
+    cin >> k;
+    string dir;
+    cin >> dir;
+    if(dir == "right"){
+        rotateArrayright(n, arr, k);
+    }else if(dir == "left"){
+        rotateArrayleft(n, arr, k);
+    }
     }
     return 0;
 }
